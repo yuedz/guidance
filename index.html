@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>毕业论文指导系统</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: "Microsoft YaHei", sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1a365d;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background-color: #2c5282;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    .section {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .section h2 {
+      color: #2c5282;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 10px;
+    }
+    .announcement {
+      padding: 10px 0;
+      border-bottom: 1px dashed #eee;
+    }
+    .resource-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+    }
+    .upload-area {
+      border: 2px dashed #cbd5e0;
+      border-radius: 6px;
+      padding: 30px;
+      text-align: center;
+      margin-top: 15px;
+    }
+    input[type="file"] {
+      margin-top: 10px;
+    }
+    button {
+      background-color: #3182ce;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #718096;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎓 本科毕业论文指导</h1>
+</header>
+
+<nav>
+  <a href="#notice"><i class="fas fa-bell"></i> 通知</a>
+  <a href="#resources"><i class="fas fa-book"></i> 资料</a>
+  <a href="#upload"><i class="fas fa-upload"></i> 上传</a>
+  <a href="#profile"><i class="fas fa-user"></i> 个人中心</a>
+</nav>
+
+<div class="container">
+
+  <!-- 通知区 -->
+  <div id="notice" class="section">
+    <h2><i class="fas fa-bullhorn"></i> 最新通知</h2>
+    <div class="announcement">
+      <strong>📢【重要】</strong> 初稿提交截止日期：2025年11月15日
+    </div>
+    <div class="announcement">
+      <strong>📅</strong> 开题答辩安排已发布，请查看个人中心。
+    </div>
+    <div class="announcement">
+      <strong>⚠️</strong> 论文格式必须使用最新模板（见资料区）。
+    </div>
+  </div>
+
+  <!-- 资料区 -->
+  <div id="resources" class="section">
+    <h2><i class="fas fa-folder-open"></i> 写作资料</h2>
+    <div class="resource-item">
+      <span>毕业论文模板（Word版）</span>
+      <a href="#" download>下载</a>
+    </div>
+    <div class="resource-item">
+      <span>参考文献格式指南（GB/T 7714）</span>
+      <a href="#" target="_blank">预览</a>
+    </div>
+    <div class="resource-item">
+      <span>查重系统操作手册</span>
+      <a href="#" download>下载</a>
+    </div>
+  </div>
+
+  <!-- 上传区 -->
+  <div id="upload" class="section">
+    <h2><i class="fas fa-file-upload"></i> 上传论文材料</h2>
+    <p>请上传您的论文草稿、查重报告或导师签字页扫描件。</p>
+    
+    <div class="upload-area">
+      <i class="fas fa-cloud-upload-alt" style="font-size: 48px; color: #a0aec0;"></i>
+      <p>点击下方选择文件，或拖拽文件到此处</p>
+      <input type="file" id="fileInput" accept=".pdf,.docx,.jpg,.png">
+      <br>
+      <button onclick="uploadFile()">上传文件</button>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <h3>已上传文件：</h3>
+      <ul>
+        <li>初稿_张三_20251010.pdf （2025-10-10）</li>
+        <!-- 动态加载 -->
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 XX大学 教务处 · 毕业论文指导系统
+</footer>
+
+<script>
+  function uploadFile() {
+    const file = document.getElementById('fileInput').files[0];
+    if (file) {
+      alert('✅ 文件 "' + file.name + '" 上传成功！\n（实际项目中将调用后端API）');
+      // 此处应调用 fetch 或 axios 发送到服务器
+    } else {
+      alert('⚠️ 请选择一个文件！');
+    }
+  }
+</script>
+
+</body>
+</html>
